@@ -5545,7 +5545,8 @@ function buildProjectPage(id) {
       '<div class="sec"><div class="stitle">📚 '+L.glossary+'</div><div class="ggl">'+glossHtml+'</div></div>' +
       '<div class="sec"><div class="stitle">🛒 '+L.where+'</div><div class="lgrid">'+linksHtml+'</div></div>' +
       '<div class="sec"><div class="tipbox"><strong>💡 '+L.tip+': </strong>'+dd.tip+'</div></div>' +
-      '</div>';
+      '</div>' +
+      (p.pdf ? '<div id="pdf-viewer-section" style="max-width:1000px;margin:0 auto 52px;padding:0 32px"><div style="font-size:0.74rem;font-weight:800;color:var(--cyan,#00d4ff);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(30,48,88,0.8)">📄 '+(isPT?'PDF do Guia':'PDF de la Guía')+'</div><iframe src="'+p.pdf+'" style="width:100%;height:800px;border:1px solid rgba(30,48,88,0.8);border-radius:12px;background:#0d1f3c" title="'+pd.title+'" allowfullscreen></iframe></div>' : '');
   } else {
     var conceptsStr = dd.materials.join(' ')+' '+dd.desc;
     var concepts = getConceptBadges(conceptsStr);
@@ -5618,7 +5619,8 @@ function buildProjectPage(id) {
         '<div class="sec"><div class="stitle">'+safeTitle+'</div><div class="sflist">'+safeHtml+'</div></div>'+
         '<div class="sec"><div class="stitle">'+extraTitle+'</div><div class="xlist">'+extraHtml+'</div></div>'+
       '</div>'+
-      '</div>';
+      '</div>'+
+      (p.pdf ? '<div id="pdf-viewer-section" style="max-width:1000px;margin:0 auto 52px;padding:0 32px"><div style="font-size:0.74rem;font-weight:800;color:var(--cyan,#00d4ff);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(30,48,88,0.8)">📄 '+(isPT?'PDF do Projeto':'PDF del Proyecto')+'</div><iframe src="'+p.pdf+'" style="width:100%;height:800px;border:1px solid rgba(30,48,88,0.8);border-radius:12px;background:#0d1f3c" title="'+pd.title+'" allowfullscreen></iframe></div>' : '');
   }
 
   var timeLabel = (pd.time && pd.time !== '—') ? pd.time + ' ' + L.hrs : '—';
@@ -5636,7 +5638,7 @@ function buildProjectPage(id) {
         '<span class="hb">❗ <strong>'+dd.errors.length+'</strong> '+(isPT?'erros comuns':'errores comunes')+'</span>'+
       '</div>'+
       '<div class="hdesc">'+dd.desc+'</div>'+
-      (p.pdf ? '<div style="margin-top:20px"><a href="'+p.pdf+'" download style="display:inline-flex;align-items:center;gap:8px;background:#f5c842;color:#0a1628;font-weight:800;font-size:0.9rem;padding:11px 24px;border-radius:30px;text-decoration:none;box-shadow:0 4px 16px rgba(245,200,66,0.35)">⬇ '+(isPT?'Baixar PDF do Projeto':'Descargar PDF del Proyecto')+'</a></div>' : '')+
+      (p.pdf ? '<div style="margin-top:20px"><button onclick="document.getElementById(\'pdf-viewer-section\').scrollIntoView({behavior:\'smooth\'})" style="display:inline-flex;align-items:center;gap:8px;background:#f5c842;color:#0a1628;font-weight:800;font-size:0.9rem;padding:11px 24px;border-radius:30px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,200,66,0.35)">📄 '+(isPT?'Ver PDF do Projeto':'Ver PDF del Proyecto')+'</button></div>' : '')+
     '</div>'+
   '</div></div>';
 
